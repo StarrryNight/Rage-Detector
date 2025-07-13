@@ -42,15 +42,25 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
                                     mp_drawing.DrawingSpec(color=(245,117,66), thickness =1, circle_radius=4),
                                     mp_drawing.DrawingSpec(color=(245,66,230), thickness=2, circle_radius=2))
 
-        cv2.imshow('Raw Webcam Feed', image)
+       
        
         #write in csv by calling functions
         try:
-            getResult.getResult(results.pose_landmarks.landmark,results.face_landmarks.landmark, model)
+            res = getResult.getResult(results.pose_landmarks.landmark,results.face_landmarks.landmark, model)
+            coords = tuple(np.multiply(
+                            np.array(
+                                (results.pose_landmarks.landmark[mp_holistic.PoseLandmark.RIGHT_EAR].x, 
+                                 results.pose_landmarks.landmark[mp_holistic.PoseLandmark.RIGHT_EAR].y))
+                        , [640,480]).astype(int))
+            cv2.rectangle(image, 
+                          (coords[0], coords[1]-65), 
+                          (coords[0]+len(res)*20, coords[1]-100), 
+                          (245, 117, 16), -1)
+            cv2.putText(image, res, (coords[0], coords[1]-75), 
+                        cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
         except:
-            print("nigger")
             pass
-
+        cv2.imshow('Raw Webcam Feed', image)
         if cv2.waitKey(10) & 0xFF == ord('q'):
             break
 

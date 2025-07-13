@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 
 
-def getResult(pose_landmarks,face_landmarks, model):
+def getResult(pose_landmarks,face_landmarks, model)-> str:
 
     #get coordinates
     #get row
@@ -16,7 +16,9 @@ def getResult(pose_landmarks,face_landmarks, model):
 
     X = pd.DataFrame([row])
     body_language = model.predict(X.values)[0]
-    print(body_language)
+    prob = model.predict_proba(X.values)[0]
+    print(body_language, prob)
+    return body_language
 
     
 
