@@ -1,4 +1,6 @@
 # RAGE Detector 
+**The current models are trained by my own data. Guide to train your own is in the ***Training Your Own Model*** Section**
+
 A real-time emotion detection system designed to identify rage and anger in gaming contexts, particularly for reaction to bad randoms in Marvel Rivals and other competitive games.
 
 This project uses computer vision and machine learning to analyze facial expressions, body posture, and hand gestures in real-time to detect when a player is experiencing rage or anger, or happiness when hitting a 3-man Ironman Ult. The system leverages MediaPipe for pose and facial landmark detection, combined with trained machine learning models to classify emotional states.
