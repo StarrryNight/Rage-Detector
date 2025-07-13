@@ -1,5 +1,5 @@
 # RAGE Detector 
-**The current models are trained by my own data. Guide to train your own is in the ***Training Your Own Model*** Section**
+**The current models are trained using my own data. Guide to train your own is in the ***Training Your Own Model*** Section**
 
 A real-time emotion detection system designed to identify rage and anger in gaming contexts, particularly for reaction to bad randoms in Marvel Rivals and other competitive games.
 
