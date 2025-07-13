@@ -10,7 +10,7 @@ def initializeCSV(pose_landmarks,face_landmarks):
         landmarks += [f'x{val}', f'y{val}', f'z{val}', f'v{val}']
 
     #initialize csv
-    with open('coords.csv', mode='w', newline='') as f:
+    with open('training/data.csv', mode='w', newline='') as f:
         csv_writer = csv.writer(f,delimiter=',', quotechar ='"', quoting = csv.QUOTE_MINIMAL)
         csv_writer.writerow(landmarks)
 
@@ -19,7 +19,7 @@ def exportCSV(pose_landmarks,face_landmarks, feeling):
 
 
 
-     #get coordinates
+    #get coordinates
     #get row
     pose_row = list(np.array([[landmark.x, landmark.y, landmark.z, landmark.visibility] for landmark in pose_landmarks]).flatten())
     face_row = list(np.array([[landmark.x, landmark.y, landmark.z, landmark.visibility] for landmark in face_landmarks]).flatten())
@@ -28,7 +28,7 @@ def exportCSV(pose_landmarks,face_landmarks, feeling):
     print(feeling)
 
     #export to csv
-    with open('coords.csv', mode = 'a', newline='') as f:
+    with open('training/data.csv', mode = 'a', newline='') as f:
         csv_writer = csv.writer(f, delimiter = ',', quotechar='"', quoting = csv.QUOTE_MINIMAL)
         csv_writer.writerow(row)
 
