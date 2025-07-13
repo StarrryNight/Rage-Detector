@@ -1,10 +1,16 @@
 import mediapipe as mp
 import cv2
+import numpy as np
+import handleCSV
 
 mp_drawing = mp.solutions.drawing_utils #drawing functions
 mp_holistic = mp.solutions.holistic #solutions
 
+current_feeling = "happy"
+
 cap = cv2.VideoCapture(0)
+
+csv_initialized = False
 
 with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
 
@@ -36,11 +42,16 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
                                     mp_drawing.DrawingSpec(color=(245,66,230), thickness=2, circle_radius=2))
 
         cv2.imshow('Raw Webcam Feed', image)
-
-
-        #get coordinates
-        results.pose_landmarks
-
+        
+        #write in csv by calling functions
+        try:
+            if not csv_initialized:
+                handleCSV.initializeCSV(results.pose_landmarks.landmark,results.face_landmarks.landmark)
+                csv_initialized= True
+            print("hio")
+            handleCSV.exportCSV(results.pose_landmarks.landmark,results.face_landmarks.landmark,current_feeling)
+        except:
+            pass
 
         if cv2.waitKey(10) & 0xFF == ord('q'):
             break
