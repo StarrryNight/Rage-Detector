@@ -28,9 +28,9 @@ X_train,X_test, y_train, y_test = train_test_split(X,y,test_size = 0.3, random_s
 #setup pipelines dictionary for training
 pipelines = {
     'lr':make_pipeline(StandardScaler(), LogisticRegression()),
-    'rc':make_pipeline(StandardScaler(), RidgeClassifier()),
-    'rf':make_pipeline(StandardScaler(), RandomForestClassifier()),
-    'gb':make_pipeline(StandardScaler(), GradientBoostingClassifier()),
+    #'rc':make_pipeline(StandardScaler(), RidgeClassifier()),
+    #'rf':make_pipeline(StandardScaler(), RandomForestClassifier()),
+    #'gb':make_pipeline(StandardScaler(), GradientBoostingClassifier()),
 }
 
 fit_models = {}
@@ -49,9 +49,9 @@ for algo, model in fit_models.items():
 #saving with pickle
 with open('training/LR.pkl', 'wb') as f:
     pickle.dump(fit_models['lr'], f)
-with open('training/RC.pkl', 'wb') as f:
-    pickle.dump(fit_models['rc'], f)
-with open('training/RF.pkl', 'wb') as f:
-    pickle.dump(fit_models['rf'], f)
-with open('training/GB.pkl', 'wb') as f:
-    pickle.dump(fit_models['gb'], f)
+#with open('training/RC.pkl', 'wb') as f:
+   # pickle.dump(fit_models['rc'], f)
+#with open('training/RF.pkl', 'wb') as f:
+    #pickle.dump(fit_models['rf'], f)
+#with open('training/GB.pkl', 'wb') as f:
+   # pickle.dump(fit_models['gb'], f)

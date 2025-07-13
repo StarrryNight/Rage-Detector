@@ -6,7 +6,7 @@ import handleCSV
 mp_drawing = mp.solutions.drawing_utils #drawing functions
 mp_holistic = mp.solutions.holistic #solutions
 
-current_feeling = "locked-in" #current training feeling
+current_feeling = "angry" #current training feeling
 
 
 csv_initialized =  True #If False, restarts training. If true, appends on current data
