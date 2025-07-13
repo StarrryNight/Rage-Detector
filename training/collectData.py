@@ -6,11 +6,14 @@ import handleCSV
 mp_drawing = mp.solutions.drawing_utils #drawing functions
 mp_holistic = mp.solutions.holistic #solutions
 
-current_feeling = "disappointed"
+current_feeling = "locked-in" #current training feeling
+
+
+csv_initialized =  True #If False, restarts training. If true, appends on current data
+
 
 cap = cv2.VideoCapture(0)
 
-csv_initialized = True
 
 with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
 

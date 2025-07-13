@@ -35,16 +35,23 @@ pipelines = {
 
 fit_models = {}
 for algo, pipeline in pipelines.items():
-    model = pipeline.fit(X_train, y_train)
+    print(f"training {algo}")
+    model = pipeline.fit(X_train.values, y_train.values)
     fit_models[algo]= model
 
 
 #test "cycle" (well im using scikit learn)
 for algo, model in fit_models.items():
-    yhat = model.predict(X_test)
+    yhat = model.predict(X_test.values)
     print(algo, accuracy_score(y_test, yhat))
 
 
 #saving with pickle
-with open('model.pkl', 'wb') as f:
+with open('training/LR.pkl', 'wb') as f:
+    pickle.dump(fit_models['lr'], f)
+with open('training/RC.pkl', 'wb') as f:
+    pickle.dump(fit_models['rc'], f)
+with open('training/RF.pkl', 'wb') as f:
     pickle.dump(fit_models['rf'], f)
+with open('training/GB.pkl', 'wb') as f:
+    pickle.dump(fit_models['gb'], f)
