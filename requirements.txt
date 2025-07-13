@@ -1,0 +1,4 @@
+meidapipe
+opencv-python 
+pandas
+scikit-learn
